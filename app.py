@@ -98,7 +98,7 @@ internet_access = st.selectbox(
 parent_education = st.selectbox(
     "Parent Education",
     [
-        "High School",
+        "School",
         "Graduate",
         "Postgraduate"
     ]
