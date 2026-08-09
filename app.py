@@ -5,12 +5,14 @@ import joblib
 # -----------------------------
 # Load Model
 # -----------------------------
+
 model = joblib.load("best_ridge_model.pkl")
 
 
 # -----------------------------
 # Page Configuration
 # -----------------------------
+
 st.set_page_config(
     page_title="Student Score Predictor",
     page_icon="🎓",
@@ -21,6 +23,7 @@ st.set_page_config(
 # -----------------------------
 # Title
 # -----------------------------
+
 st.title("🎓 Student Score Prediction System")
 st.write("Enter student details to predict the final score.")
 
@@ -127,6 +130,32 @@ if st.button("🔮 Predict Score"):
 
     predicted_score = prediction[0]
 
+
+    # -----------------------------
+    # Performance Category
+    # -----------------------------
+
+    if predicted_score <= 40.0:
+        category = "Fail"
+
+    elif predicted_score <= 54.9:
+        category = "Average"
+
+    elif predicted_score <= 67.8:
+        category = "Good"
+
+    else:
+        category = "Out of Range"
+
+
+    # -----------------------------
+    # Display Result
+    # -----------------------------
+
     st.success(
         f"🎯 Predicted Final Score: **{predicted_score:.2f}**"
+    )
+
+    st.info(
+        f"📊 Performance Category: **{category}**"
     )
